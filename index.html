@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adeptix — Tez orada</title>
-<meta name="description" content="Adeptix tez orada ishga tushadi. Birinchilardan bo'lib xabardor bo'lish uchun emailingizni qoldiring.">
+<meta name="description" content="Adeptix — Your Professional Partner. Tez orada ishga tushadi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -169,17 +169,34 @@
     opacity:0;
   }
 
-  .tagline{
-    margin-top:26px;
-    font-size: clamp(1.02rem, 2.2vw, 1.25rem);
-    color: var(--muted);
-    line-height:1.6;
-    max-width:560px;
+  .slogan{
+    margin-top:30px;
+    font-family:'Sora', sans-serif;
+    font-weight:600;
+    font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color: var(--ink);
     opacity:0;
     animation: rise 0.8s ease forwards 0.4s;
   }
 
-  .tagline b{ color: var(--ink); font-weight:600; }
+  .slogan::before,
+  .slogan::after{
+    content:"";
+    display:inline-block;
+    width:28px;
+    height:1px;
+    background: linear-gradient(90deg, transparent, var(--cyan));
+    vertical-align:middle;
+    margin-right:14px;
+  }
+
+  .slogan::after{
+    background: linear-gradient(90deg, var(--violet), transparent);
+    margin-right:0;
+    margin-left:14px;
+  }
 
   @keyframes rise{
     from{ opacity:0; transform: translateY(16px); }
@@ -191,69 +208,9 @@
     50%{ background-position: 100% 50%; }
   }
 
-  form{
-    margin-top:44px;
-    display:flex;
-    gap:10px;
-    width:100%;
-    max-width:430px;
-    opacity:0;
-    animation: rise 0.8s ease forwards 0.55s;
-  }
-
-  input[type="email"]{
-    flex:1;
-    background: rgba(255,255,255,0.04);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:14px 16px;
-    color: var(--ink);
-    font-family:'Inter', sans-serif;
-    font-size:0.95rem;
-    outline:none;
-    transition: border-color 0.25s ease, background 0.25s ease;
-  }
-
-  input[type="email"]::placeholder{ color:#6b6680; }
-
-  input[type="email"]:focus{
-    border-color: var(--violet);
-    background: rgba(139,92,246,0.08);
-  }
-
-  button{
-    font-family:'Sora', sans-serif;
-    font-weight:700;
-    font-size:0.92rem;
-    color:#08060f;
-    background: linear-gradient(120deg, var(--cyan), var(--violet));
-    border:none;
-    border-radius:12px;
-    padding:14px 22px;
-    cursor:pointer;
-    white-space:nowrap;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  button:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(139,92,246,0.35);
-  }
-
-  button:active{ transform: translateY(0); }
-
-  button:focus-visible, input:focus-visible, a:focus-visible{
+  a:focus-visible{
     outline: 2px solid var(--cyan);
     outline-offset: 3px;
-  }
-
-  .form-note{
-    margin-top:14px;
-    font-size:0.8rem;
-    color:#6b6680;
-    min-height:18px;
-    opacity:0;
-    animation: rise 0.8s ease forwards 0.65s;
   }
 
   footer{
@@ -282,14 +239,12 @@
   .socials a:hover{ color: var(--ink); }
 
   @media (max-width: 560px){
-    form{ flex-direction:column; }
-    button{ width:100%; }
     footer{ justify-content:center; text-align:center; flex-direction:column; }
   }
 
   @media (prefers-reduced-motion: reduce){
     *, *::before{ animation: none !important; transition:none !important; }
-    h1, .tagline, .eyebrow, form, .form-note{ opacity:1; transform:none; }
+    h1, .slogan, .eyebrow{ opacity:1; transform:none; }
   }
 </style>
 </head>
@@ -313,13 +268,7 @@
     <main>
       <p class="eyebrow">Yangi bosqich boshlanmoqda</p>
       <h1>Adeptix</h1>
-      <p class="tagline">Biz hozir <b>katta narsa</b> ustida ishlayapmiz. Sahifa tayyor bo'lishi bilanoq birinchi bo'lib siz bilamiz.</p>
-
-      <form id="notifyForm">
-        <input type="email" id="emailInput" placeholder="email@manzilingiz.com" required autocomplete="email">
-        <button type="submit">Xabardor qil</button>
-      </form>
-      <p class="form-note" id="formNote"></p>
+      <p class="slogan">Your Professional Partner</p>
     </main>
 
     <footer>
@@ -331,22 +280,6 @@
       </div>
     </footer>
   </div>
-
-  <script>
-    const form = document.getElementById('notifyForm');
-    const note = document.getElementById('formNote');
-    const input = document.getElementById('emailInput');
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const email = input.value.trim();
-      if(!email){ return; }
-      note.textContent = "Rahmat! " + email + " ro'yxatga olindi.";
-      note.style.color = '#22d3ee';
-      input.value = '';
-      input.blur();
-    });
-  </script>
 
 </body>
 </html>

@@ -221,6 +221,41 @@
     background: rgba(160,140,255,0.08);
   }
 
+  .stats{
+    margin-top: 22px;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content:center;
+  }
+
+  .stat{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .stat span span{ color: var(--paper); }
+
+  .dot-live{
+    width:7px; height:7px;
+    border-radius:50%;
+    background: #3ddc84;
+    box-shadow: 0 0 8px #3ddc84;
+    animation: livepulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes livepulse{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:0.45; transform:scale(0.7); }
+  }
+
   footer{
     position: relative;
     z-index: 2;
@@ -256,6 +291,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .field{ animation: none; }
+    .dot-live{ animation: none; }
   }
 </style>
 </head>
@@ -301,7 +337,16 @@
     <div class="contact">
       <a class="primary" href="https://t.me/adeptix_admin" target="_blank" rel="noopener">Telegram orqali bog‘lanish</a>
       <a href="mailto:admin@adeptix.uz">admin@adeptix.uz</a>
-      <a href="tel:+998934037701">+998 93 403 77 01</a>
+    </div>
+
+    <div class="stats" id="stats" hidden>
+      <div class="stat" id="onlineStat">
+        <span class="dot-live" aria-hidden="true"></span>
+        <span><span id="onlineCount">0</span> kishi hozir sahifada</span>
+      </div>
+      <div class="stat" id="visitsStat">
+        <span><span id="totalVisits">0</span> marta ko‘rilgan</span>
+      </div>
     </div>
   </div>
 </main>
@@ -351,6 +396,89 @@
 
   tick();
   var timer = setInterval(tick, 1000);
+
+  // Live "online now" + total visit count.
+  // Real counters via Abacus (abacus.jasoncameron.dev) — a free, public, no-signup
+  // counting service. Nothing is fabricated: if the service can't be reached
+  // (network, ad-blocker, offline), the whole stats row stays hidden rather
+  // than showing a made-up number.
+  (function(){
+    var API = 'https://abacus.jasoncameron.dev';
+    var NS = 'adeptix.uz';
+    var statsEl = document.getElementById('stats');
+    var onlineEl = document.getElementById('onlineCount');
+    var totalEl = document.getElementById('totalVisits');
+    var joined = 0, left = 0, ready = false;
+
+    function fmt(n){
+      try { return n.toLocaleString('uz-UZ'); } catch(e){ return String(n); }
+    }
+
+    function renderOnline(){
+      var now = Math.max(1, joined - left);
+      onlineEl.textContent = fmt(now);
+    }
+
+    function safeJson(res){
+      if (!res.ok) throw new Error('bad status');
+      return res.json();
+    }
+
+    // Total pageviews: increments once per load, real cumulative count.
+    fetch(API + '/hit/' + NS + '/total_visits')
+      .then(safeJson)
+      .then(function(d){
+        totalEl.textContent = fmt(d.value);
+        statsEl.hidden = false;
+      })
+      .catch(function(){ /* leave stats hidden if this fails */ });
+
+    // "Online now": two plain counters (joined / left). Online = joined - left.
+    // Not a perfect live presence system, but every number in it is real.
+    function join(){
+      return fetch(API + '/hit/' + NS + '/online_joined', { keepalive: true })
+        .then(safeJson)
+        .then(function(d){ joined = d.value; if (ready) renderOnline(); });
+    }
+
+    function leave(){
+      fetch(API + '/hit/' + NS + '/online_left', { keepalive: true }).catch(function(){});
+    }
+
+    Promise.all([
+      join(),
+      fetch(API + '/get/' + NS + '/online_left').then(function(res){
+        return res.ok ? res.json() : { value: 0 };
+      }).then(function(d){ left = d.value || 0; }).catch(function(){ left = 0; })
+    ]).then(function(){
+      ready = true;
+      renderOnline();
+      statsEl.hidden = false;
+    }).catch(function(){ /* leave stats hidden if this fails */ });
+
+    function refresh(){
+      Promise.all([
+        fetch(API + '/get/' + NS + '/online_joined').then(safeJson).catch(function(){ return null; }),
+        fetch(API + '/get/' + NS + '/online_left').then(function(res){
+          return res.ok ? res.json() : null;
+        }).catch(function(){ return null; })
+      ]).then(function(results){
+        if (results[0]) joined = results[0].value;
+        if (results[1]) left = results[1].value;
+        if (ready) renderOnline();
+      });
+    }
+    setInterval(refresh, 20000);
+
+    window.addEventListener('pagehide', leave);
+    document.addEventListener('visibilitychange', function(){
+      if (document.visibilityState === 'hidden') {
+        leave();
+      } else if (document.visibilityState === 'visible' && ready) {
+        join();
+      }
+    });
+  })();
 </script>
 
 </body>

@@ -28,6 +28,33 @@
     });
   }
 
+  // "Xizmatlar" dropdown — hover on desktop (CSS), tap-to-open here for touch/mobile
+  document.querySelectorAll(".nav-item").forEach(function (item) {
+    var drop = item.querySelector(".nav-drop-toggle");
+    if (!drop) return;
+    drop.addEventListener("click", function (e) {
+      e.preventDefault();
+      var isOpen = item.classList.toggle("is-open");
+      drop.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      document.querySelectorAll(".nav-item.is-open").forEach(function (other) {
+        if (other !== item) {
+          other.classList.remove("is-open");
+          var otherToggle = other.querySelector(".nav-drop-toggle");
+          if (otherToggle) otherToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+  });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".nav-item")) {
+      document.querySelectorAll(".nav-item.is-open").forEach(function (item) {
+        item.classList.remove("is-open");
+        var t = item.querySelector(".nav-drop-toggle");
+        if (t) t.setAttribute("aria-expanded", "false");
+      });
+    }
+  });
+
   // Close only one FAQ item open at a time (optional, keeps the list tidy)
   document.querySelectorAll(".faq-list").forEach(function (list) {
     var items = list.querySelectorAll("details.faq-item");

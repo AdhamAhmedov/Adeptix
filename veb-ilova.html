@@ -3,53 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>360° Virtual Tur — ADEPTIX</title>
-<meta name="description" content="ADEPTIX'dan mehmonxona, restoran, muzey, ko'chmas mulk va boshqa joylar uchun professional 360° virtual sayohat xizmati. Mijoz joyingizni onlayn, interaktiv tarzda ko'radi.">
-<link rel="canonical" href="https://adeptix.uz/360-virtual-tur.html">
+<title>Veb-ilova yaratish — ADEPTIX</title>
+<meta name="description" content="ADEPTIX'dan maxsus veb-ilovalar: shaxsiy kabinetlar, mijoz kabinetlari, bron qilish tizimlari, ta'lim platformalari va ichki biznes tizimlari.">
+<link rel="canonical" href="https://adeptix.uz/veb-ilova.html">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ADEPTIX">
-<meta property="og:title" content="360° Virtual Tur — ADEPTIX">
-<meta property="og:description" content="Mehmonxona, restoran, muzey, ko'chmas mulk va boshqa joylar uchun professional 360° virtual sayohat xizmati.">
-<meta property="og:url" content="https://adeptix.uz/360-virtual-tur.html">
+<meta property="og:title" content="Veb-ilova yaratish — ADEPTIX">
+<meta property="og:description" content="Aniq biznes ehtiyojlari uchun mo'ljallangan shaxsiy kabinetlar, bron qilish tizimlari va ichki platformalar.">
+<meta property="og:url" content="https://adeptix.uz/veb-ilova.html">
 <meta property="og:locale" content="uz_UZ">
 <meta name="twitter:card" content="summary">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.7/pannellum.min.css">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "360° Virtual Tour",
+  "serviceType": "Web Application Development",
   "provider": { "@type": "Organization", "name": "ADEPTIX", "url": "https://adeptix.uz/" },
   "areaServed": "UZ",
-  "name": "360° Virtual Tur",
-  "description": "Mehmonxona, restoran, muzey, ko'chmas mulk va boshqa fizik joylar uchun interaktiv 360° virtual sayohat yaratish xizmati."
+  "name": "Veb-ilova yaratish",
+  "description": "Shaxsiy kabinetlar, mijoz kabinetlari, ta'lim platformalari, bron qilish tizimlari va ichki biznes tizimlari uchun maxsus veb-ilovalar ishlab chiqish xizmati."
 }
 </script>
-
-<style>
-  .viewer-shell{
-    position:relative; border-radius:var(--radius); overflow:hidden;
-    border:1px solid var(--line); background:#111;
-    height:min(58vh, 520px); min-height:360px;
-    box-shadow:0 24px 60px -34px rgba(22,24,28,0.35);
-  }
-  #panorama{ position:absolute; inset:0; width:100%; height:100%; }
-  .viewer-badge{
-    position:absolute; top:14px; left:14px; z-index:5;
-    display:flex; align-items:center; gap:8px;
-    background:rgba(255,255,255,0.92); color:var(--ink);
-    border:1px solid var(--line); border-radius:999px;
-    padding:7px 14px 7px 10px; font-size:14px; font-weight:600;
-  }
-  .dot{ width:8px; height:8px; border-radius:50%; background:var(--purple); box-shadow:0 0 0 4px rgba(109,74,255,0.16); }
-  .viewer-caption{ margin-top:12px; font-size:14px; color:var(--muted); }
-</style>
 </head>
 <body>
 
@@ -86,77 +66,59 @@
 
 <main>
 
-  <section class="section" style="padding-bottom:0;">
+  <!-- HERO -->
+  <section class="hero">
     <div class="container">
-      <p class="eyebrow">360° Virtual Tour</p>
-      <h1>Joyingizni <span style="color:var(--purple);">360°</span> formatda namoyish qiling.</h1>
-      <p class="lede">Mijoz uyidan chiqmasdan turib joyingizni har tomondan, real vaqtda ko'rishi mumkin. Bu — oddiy suratlardan farqli, to'liq interaktiv tajriba.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-
-      <div class="project-card">
-        <div class="info">
-          <div class="icon" aria-hidden="true">T</div>
-          <div>
-            <h3>Tabiat muzeyi — 360° tur</h3>
-            <p>ADEPTIX tomonidan ishlab chiqilgan haqiqiy loyiha</p>
+      <div class="hero-copy">
+        <p class="eyebrow">Web Applications</p>
+        <h1>Aniq biznes vazifasi uchun — <em>maxsus veb-ilova</em>.</h1>
+        <p class="lede">Oddiy sayt yetarli bo'lmagan holatlar uchun — shaxsiy kabinetlar, bron qilish tizimlari va ichki platformalar aynan sizning jarayoningizga moslab ishlab chiqiladi.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Loyiha haqida murojaat</a>
+          <a class="btn btn-outline" href="#misollar">Misollarni ko'rish</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:8%;">
+          <div class="mock-dashboard">
+            <div class="mock-dashboard__side">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="mock-dashboard__main">
+              <div class="mock-dashboard__cards"><div></div><div></div></div>
+              <div class="mock-dashboard__chart"><span></span><span style="height:60%"></span><span style="height:35%"></span><span style="height:80%"></span><span style="height:50%"></span><span style="height:70%"></span></div>
+            </div>
           </div>
         </div>
-        <a class="btn btn-outline" href="https://360.tabiatmuzey.uz/" target="_blank" rel="noopener">To'liq turni ko'rish ↗</a>
-      </div>
-
-      <p class="eyebrow">Interaktiv namuna</p>
-      <div class="viewer-shell">
-        <div class="viewer-badge"><span class="dot"></span> Sudrab aylantiring</div>
-        <div id="panorama"></div>
-      </div>
-      <p class="viewer-caption">360° ko'rish tajribasi shunday ishlaydi — sichqoncha yoki barmoq bilan istalgan tomonga aylantirib ko'ring.</p>
-
-    </div>
-  </section>
-
-  <section class="section" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-    <div class="container split">
-      <div>
-        <p class="eyebrow">Bu qanday ishlaydi?</p>
-        <h2>Suratdan ko'ra ko'proq narsa</h2>
-        <p class="lede">Biz joyingizni maxsus 360° kamera bilan suratga olamiz va shu ko'rinishni saytingizga yoki Google xaritalarga interaktiv tur sifatida joylashtiramiz.</p>
-        <ul style="padding-left:20px; color:var(--muted); font-size:16px; line-height:1.7;">
-          <li>Mijoz joyni masofadan, har tomondan ko'ra oladi</li>
-          <li>Biznes vizual jihatdan yanada ochiq bo'ladi</li>
-          <li>Google xaritalar va raqamli marketing uchun foydali</li>
-          <li>Oddiy suratlardan farqli — to'liq interaktiv tajriba</li>
-        </ul>
-      </div>
-      <div>
-        <p class="eyebrow">Qaysi sohalar uchun</p>
-        <div class="chips">
-          <span class="chip">Mehmonxona</span>
-          <span class="chip">Restoran</span>
-          <span class="chip">Ta'lim muassasasi</span>
-          <span class="chip">Klinika</span>
-          <span class="chip">Ko'chmas mulk</span>
-          <span class="chip">Showroom</span>
-          <span class="chip">Muzey</span>
-          <span class="chip">Koworking</span>
-          <span class="chip">Dam olish maskani</span>
-          <span class="chip">Turistik obyekt</span>
-        </div>
       </div>
     </div>
   </section>
 
+  <!-- EXAMPLES -->
+  <section class="section" id="misollar" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <p class="eyebrow">Misollar</p>
+      <h2>Qanday tizimlarni ishlab chiqamiz</h2>
+      <div class="why-grid">
+        <div class="why-item"><h3>Shaxsiy kabinetlar</h3><p>Foydalanuvchi o'z ma'lumotlari va tarixini ko'radigan shaxsiy hisob.</p></div>
+        <div class="why-item"><h3>Mijoz kabinetlari</h3><p>Mijozlar buyurtma yoki xizmat holatini kuzatadigan panel.</p></div>
+        <div class="why-item"><h3>Ta'lim platformalari</h3><p>Kurslar, darslar va o'quvchilar uchun oddiy ta'lim tizimi.</p></div>
+        <div class="why-item"><h3>Bron qilish tizimlari</h3><p>Vaqt yoki joy bron qilish uchun onlayn tizim.</p></div>
+        <div class="why-item"><h3>Ichki biznes tizimlari</h3><p>Kompaniya ichki jarayonlarini soddalashtiradigan platforma.</p></div>
+        <div class="why-item"><h3>Interaktiv platformalar</h3><p>Foydalanuvchi bilan real vaqtda ishlaydigan maxsus yechimlar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section class="section" id="boglanish">
     <div class="container">
       <div class="contact-panel">
         <p class="eyebrow">Buyurtma berish</p>
-        <h2>Joyingiz uchun 360° tur kerakmi?</h2>
-        <p class="lede">Telegram bot orqali qisqacha ma'lumot qoldiring — biz siz bilan bog'lanamiz.</p>
+        <h2>Biznesingiz uchun veb-ilova kerakmi?</h2>
+        <p class="lede">Loyihangiz haqida qisqacha ma'lumot qoldiring — texnik yechimni birga belgilaymiz.</p>
         <div class="contact-methods">
-          <a class="btn btn-primary" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Virtual sayohat buyurtma qilish →</a>
+          <a class="btn btn-primary" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Telegram orqali murojaat →</a>
           <a class="btn btn-outline" href="tel:+998934037701">Qo'ng'iroq qilish</a>
         </div>
       </div>
@@ -217,27 +179,6 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.7/pannellum.min.js"></script>
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-(function () {
-  function init() {
-    if (typeof pannellum === 'undefined') return;
-    pannellum.viewer('panorama', {
-      type: 'equirectangular',
-      panorama: 'assets/img/demo-360.jpg',
-      autoLoad: true,
-      autoRotate: -1.2,
-      compass: false,
-      showZoomCtrl: true,
-      showFullscreenCtrl: true,
-      hfov: 110,
-      minHfov: 50,
-      maxHfov: 120
-    });
-  }
-  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
-})();
-</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

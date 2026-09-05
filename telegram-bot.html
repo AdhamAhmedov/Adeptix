@@ -3,53 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>360° Virtual Tur — ADEPTIX</title>
-<meta name="description" content="ADEPTIX'dan mehmonxona, restoran, muzey, ko'chmas mulk va boshqa joylar uchun professional 360° virtual sayohat xizmati. Mijoz joyingizni onlayn, interaktiv tarzda ko'radi.">
-<link rel="canonical" href="https://adeptix.uz/360-virtual-tur.html">
+<title>Telegram bot yaratish — ADEPTIX</title>
+<meta name="description" content="ADEPTIX'dan Telegram bot yaratish xizmati: mijozlardan buyurtma yig'ish, ro'yxatga olish, bildirishnomalar va oddiy biznes jarayonlari uchun. Bizning o'z botimiz @adeptix_bot — jonli namuna.">
+<link rel="canonical" href="https://adeptix.uz/telegram-bot.html">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ADEPTIX">
-<meta property="og:title" content="360° Virtual Tur — ADEPTIX">
-<meta property="og:description" content="Mehmonxona, restoran, muzey, ko'chmas mulk va boshqa joylar uchun professional 360° virtual sayohat xizmati.">
-<meta property="og:url" content="https://adeptix.uz/360-virtual-tur.html">
+<meta property="og:title" content="Telegram bot yaratish — ADEPTIX">
+<meta property="og:description" content="Mijozlar bilan aloqa va buyurtmalarni yig'ish uchun oddiy va foydali Telegram bot yechimlari.">
+<meta property="og:url" content="https://adeptix.uz/telegram-bot.html">
 <meta property="og:locale" content="uz_UZ">
 <meta name="twitter:card" content="summary">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.7/pannellum.min.css">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "360° Virtual Tour",
+  "serviceType": "Telegram Bot Development",
   "provider": { "@type": "Organization", "name": "ADEPTIX", "url": "https://adeptix.uz/" },
   "areaServed": "UZ",
-  "name": "360° Virtual Tur",
-  "description": "Mehmonxona, restoran, muzey, ko'chmas mulk va boshqa fizik joylar uchun interaktiv 360° virtual sayohat yaratish xizmati."
+  "name": "Telegram bot yaratish",
+  "description": "Mijozlardan buyurtma yig'ish, ro'yxatga olish, bildirishnoma yuborish va oddiy biznes jarayonlari uchun Telegram bot ishlab chiqish xizmati."
 }
 </script>
-
-<style>
-  .viewer-shell{
-    position:relative; border-radius:var(--radius); overflow:hidden;
-    border:1px solid var(--line); background:#111;
-    height:min(58vh, 520px); min-height:360px;
-    box-shadow:0 24px 60px -34px rgba(22,24,28,0.35);
-  }
-  #panorama{ position:absolute; inset:0; width:100%; height:100%; }
-  .viewer-badge{
-    position:absolute; top:14px; left:14px; z-index:5;
-    display:flex; align-items:center; gap:8px;
-    background:rgba(255,255,255,0.92); color:var(--ink);
-    border:1px solid var(--line); border-radius:999px;
-    padding:7px 14px 7px 10px; font-size:14px; font-weight:600;
-  }
-  .dot{ width:8px; height:8px; border-radius:50%; background:var(--purple); box-shadow:0 0 0 4px rgba(109,74,255,0.16); }
-  .viewer-caption{ margin-top:12px; font-size:14px; color:var(--muted); }
-</style>
 </head>
 <body>
 
@@ -86,77 +66,90 @@
 
 <main>
 
-  <section class="section" style="padding-bottom:0;">
+  <!-- HERO -->
+  <section class="hero">
     <div class="container">
-      <p class="eyebrow">360° Virtual Tour</p>
-      <h1>Joyingizni <span style="color:var(--purple);">360°</span> formatda namoyish qiling.</h1>
-      <p class="lede">Mijoz uyidan chiqmasdan turib joyingizni har tomondan, real vaqtda ko'rishi mumkin. Bu — oddiy suratlardan farqli, to'liq interaktiv tajriba.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-
-      <div class="project-card">
-        <div class="info">
-          <div class="icon" aria-hidden="true">T</div>
-          <div>
-            <h3>Tabiat muzeyi — 360° tur</h3>
-            <p>ADEPTIX tomonidan ishlab chiqilgan haqiqiy loyiha</p>
+      <div class="hero-copy">
+        <p class="eyebrow">Telegram Bots</p>
+        <h1>Mijozlaringiz doim ishlatadigan ilovada — <em>Telegram'da</em>.</h1>
+        <p class="lede">Mijozlar bilan aloqa va buyurtmalarni yig'ish uchun oddiy va foydali Telegram bot yechimlari. Qo'shimcha ilova o'rnatishning hojati yo'q.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Bizning botni sinab ko'ring →</a>
+          <a class="btn btn-outline" href="#imkoniyatlar">Imkoniyatlarni ko'rish</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true" style="aspect-ratio:auto; padding:26px 0; background:linear-gradient(155deg, #ffffff, #ececfa 70%);">
+        <div class="mock-phone" style="position:static; margin:0 auto;">
+          <div class="mock-phone__screen">
+            <div class="mock-phone__header">
+              <div class="mock-phone__avatar">A</div>
+              <div>
+                <div class="mock-phone__name">Adeptix Bot</div>
+                <div class="mock-phone__status">onlayn</div>
+              </div>
+            </div>
+            <div class="bubble bubble--bot">Salom! 👋 Loyihangiz haqida qisqacha ma'lumot qoldiring.</div>
+            <div class="bubble bubble--user">Restoran uchun sayt kerak edi</div>
+            <div class="bubble bubble--bot">Ajoyib! Ismingiz va telefon raqamingizni yozing, mutaxassisimiz bog'lanadi.</div>
           </div>
         </div>
-        <a class="btn btn-outline" href="https://360.tabiatmuzey.uz/" target="_blank" rel="noopener">To'liq turni ko'rish ↗</a>
       </div>
-
-      <p class="eyebrow">Interaktiv namuna</p>
-      <div class="viewer-shell">
-        <div class="viewer-badge"><span class="dot"></span> Sudrab aylantiring</div>
-        <div id="panorama"></div>
-      </div>
-      <p class="viewer-caption">360° ko'rish tajribasi shunday ishlaydi — sichqoncha yoki barmoq bilan istalgan tomonga aylantirib ko'ring.</p>
-
     </div>
   </section>
 
+  <!-- PROOF -->
   <section class="section" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-    <div class="container split">
-      <div>
-        <p class="eyebrow">Bu qanday ishlaydi?</p>
-        <h2>Suratdan ko'ra ko'proq narsa</h2>
-        <p class="lede">Biz joyingizni maxsus 360° kamera bilan suratga olamiz va shu ko'rinishni saytingizga yoki Google xaritalarga interaktiv tur sifatida joylashtiramiz.</p>
-        <ul style="padding-left:20px; color:var(--muted); font-size:16px; line-height:1.7;">
-          <li>Mijoz joyni masofadan, har tomondan ko'ra oladi</li>
-          <li>Biznes vizual jihatdan yanada ochiq bo'ladi</li>
-          <li>Google xaritalar va raqamli marketing uchun foydali</li>
-          <li>Oddiy suratlardan farqli — to'liq interaktiv tajriba</li>
-        </ul>
-      </div>
-      <div>
-        <p class="eyebrow">Qaysi sohalar uchun</p>
-        <div class="chips">
-          <span class="chip">Mehmonxona</span>
-          <span class="chip">Restoran</span>
-          <span class="chip">Ta'lim muassasasi</span>
-          <span class="chip">Klinika</span>
-          <span class="chip">Ko'chmas mulk</span>
-          <span class="chip">Showroom</span>
-          <span class="chip">Muzey</span>
-          <span class="chip">Koworking</span>
-          <span class="chip">Dam olish maskani</span>
-          <span class="chip">Turistik obyekt</span>
+    <div class="container">
+      <div class="project-card" style="margin-bottom:0;">
+        <div class="info">
+          <div class="icon" aria-hidden="true">🤖</div>
+          <div>
+            <h3>@adeptix_bot — jonli namuna</h3>
+            <p>Shu saytdagi barcha "bog'lanish" tugmalari aynan shu botga ulangan — bu taqdimot emas, real ishlayotgan tizim.</p>
+          </div>
         </div>
+        <a class="btn btn-outline" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Botni ochish ↗</a>
       </div>
     </div>
   </section>
 
+  <!-- CAPABILITIES -->
+  <section class="section" id="imkoniyatlar">
+    <div class="container">
+      <p class="eyebrow">Imkoniyatlar</p>
+      <h2>Telegram bot qanday vazifalarni bajaradi</h2>
+      <div class="why-grid">
+        <div class="why-item"><h3>Murojaat va buyurtma yig'ish</h3><p>Mijozlar loyiha yoki mahsulot haqida so'rov qoldiradi.</p></div>
+        <div class="why-item"><h3>Mijozlarni ro'yxatga olish</h3><p>Ism, telefon va boshqa ma'lumotlarni tartibli yig'ish.</p></div>
+        <div class="why-item"><h3>Kursga yozilish</h3><p>Ta'lim markazlari uchun oson ro'yxatga olish oqimi.</p></div>
+        <div class="why-item"><h3>Tez-tez so'raladigan savollar</h3><p>Bot avtomatik javob beradigan oddiy FAQ tizimi.</p></div>
+        <div class="why-item"><h3>Bildirishnomalar</h3><p>Mijozlarga yangiliklar yoki holat haqida xabar yuborish.</p></div>
+        <div class="why-item"><h3>Oddiy biznes jarayonlari</h3><p>Kichik biznes uchun kundalik takrorlanadigan vazifalarni soddalashtirish.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTE: secondary service -->
+  <section class="section" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <p class="eyebrow">Eslatma</p>
+      <h2>Telegram bot — qo'shimcha, kuchli yechim.</h2>
+      <p class="lede" style="max-width:70ch;">ADEPTIXning asosiy yo'nalishi veb-saytlar va 360° virtual sayohatlardir. Telegram bot — sayt yoki biznesingizga qo'shimcha sifatida taklif qilinadigan, foydali va sodda qo'shimcha yechim.</p>
+      <div class="cta-row">
+        <a class="btn btn-outline" href="veb-sayt-yaratish.html">Veb-sayt xizmati haqida →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section class="section" id="boglanish">
     <div class="container">
       <div class="contact-panel">
         <p class="eyebrow">Buyurtma berish</p>
-        <h2>Joyingiz uchun 360° tur kerakmi?</h2>
-        <p class="lede">Telegram bot orqali qisqacha ma'lumot qoldiring — biz siz bilan bog'lanamiz.</p>
+        <h2>Biznesingiz uchun Telegram bot kerakmi?</h2>
+        <p class="lede">Botimiz orqali qisqacha ma'lumot qoldiring — biz siz bilan bog'lanamiz.</p>
         <div class="contact-methods">
-          <a class="btn btn-primary" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Virtual sayohat buyurtma qilish →</a>
+          <a class="btn btn-primary" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Telegram bot orqali murojaat →</a>
           <a class="btn btn-outline" href="tel:+998934037701">Qo'ng'iroq qilish</a>
         </div>
       </div>
@@ -217,27 +210,6 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.7/pannellum.min.js"></script>
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-(function () {
-  function init() {
-    if (typeof pannellum === 'undefined') return;
-    pannellum.viewer('panorama', {
-      type: 'equirectangular',
-      panorama: 'assets/img/demo-360.jpg',
-      autoLoad: true,
-      autoRotate: -1.2,
-      compass: false,
-      showZoomCtrl: true,
-      showFullscreenCtrl: true,
-      hfov: 110,
-      minHfov: 50,
-      maxHfov: 120
-    });
-  }
-  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
-})();
-</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

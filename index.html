@@ -3,483 +3,375 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADEPTIX — Tez orada</title>
-<meta name="description" content="ADEPTIX — professional veb-saytlar va 360° virtual sayohatlar studiyasi. Yangi platformamiz tez orada ishga tushadi.">
-<meta name="robots" content="noindex, follow">
+<title>ADEPTIX — Professional veb-saytlar va 360° virtual sayohatlar</title>
+<meta name="description" content="ADEPTIX — biznesingiz uchun professional veb-saytlar, 360° virtual sayohatlar, veb-ilovalar va Telegram botlar. Zamonaviy, tez va ishonchli raqamli yechimlar.">
+<link rel="canonical" href="https://adeptix.uz/">
+<meta name="robots" content="index, follow">
 
-<meta property="og:title" content="ADEPTIX — Tez orada">
-<meta property="og:description" content="Professional veb-saytlar va 360° virtual sayohatlar studiyasi. Tez orada ishga tushamiz.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="ADEPTIX">
+<meta property="og:title" content="ADEPTIX — Professional veb-saytlar va 360° virtual sayohatlar">
+<meta property="og:description" content="Biznesingiz uchun zamonaviy raqamli yechimlar: veb-saytlar, 360° virtual sayohatlar, veb-ilovalar va Telegram botlar.">
+<meta property="og:url" content="https://adeptix.uz/">
+<meta property="og:locale" content="uz_UZ">
 <meta name="twitter:card" content="summary">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --purple: #6D4AFF;
-    --purple-light: #A08CFF;
-    --ink: #16181C;
-    --paper: #F3F2F2;
-    --line: rgba(243,242,242,0.14);
-    --muted: rgba(243,242,242,0.6);
-  }
-
-  *{ box-sizing: border-box; }
-
-  html,body{
-    margin:0;
-    padding:0;
-    height:100%;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: "Darker Grotesque", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  body{
-    min-height: 100dvh;
-    display:flex;
-    flex-direction: column;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  /* Ambient backdrop: a single quiet gradient field, no motion beyond one slow drift */
-  .field{
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(60% 55% at 78% 12%, rgba(160,140,255,0.16), transparent 60%),
-      radial-gradient(45% 40% at 8% 92%, rgba(109,74,255,0.20), transparent 60%);
-    animation: drift 24s ease-in-out infinite alternate;
-  }
-
-  @keyframes drift{
-    from{ transform: translate3d(0,0,0); }
-    to{ transform: translate3d(0, -1.5%, 0); }
-  }
-
-  .grid-lines{
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.5;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 120px 120px;
-    -webkit-mask-image: radial-gradient(75% 60% at 50% 40%, black, transparent 78%);
-            mask-image: radial-gradient(75% 60% at 50% 40%, black, transparent 78%);
-  }
-
-  header{
-    position: relative;
-    z-index: 2;
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    padding: clamp(20px, 4vw, 40px) clamp(20px, 5vw, 56px);
-  }
-
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-
-  .brand svg{ width: 26px; height: 26px; display:block; }
-
-  .wordmark{
-    font-weight: 700;
-    font-size: 22px;
-    letter-spacing: 0.01em;
-  }
-
-  .lang{
-    font-size: 16px;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  main{
-    position: relative;
-    z-index: 2;
-    flex: 1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding: 24px clamp(20px, 6vw, 56px) 40px;
-  }
-
-  .content{
-    width: 100%;
-    max-width: 760px;
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-
-  h1{
-    margin: 0;
-    font-weight: 700;
-    line-height: 0.98;
-    font-size: clamp(40px, 7.5vw, 84px);
-    letter-spacing: -0.01em;
-  }
-
-  .sub{
-    margin: 18px 0 0;
-    max-width: 46ch;
-    font-size: clamp(18px, 2.1vw, 22px);
-    line-height: 1.4;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .countdown{
-    margin-top: clamp(40px, 6vw, 64px);
-    display:flex;
-    align-items: baseline;
-    gap: clamp(10px, 2vw, 22px);
-  }
-
-  .unit{
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    min-width: clamp(78px, 12vw, 118px);
-  }
-
-  .unit span{
-    font-weight: 800;
-    font-size: clamp(56px, 11vw, 118px);
-    line-height: 0.95;
-    font-variant-numeric: tabular-nums;
-    background: linear-gradient(180deg, var(--paper) 0%, var(--purple-light) 130%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .unit label{
-    margin-top: 6px;
-    font-size: clamp(13px, 1.4vw, 15px);
-    font-weight: 600;
-    color: var(--muted);
-  }
-
-  .sep{
-    font-weight: 700;
-    font-size: clamp(36px, 7vw, 72px);
-    color: var(--purple-light);
-    transform: translateY(-10px);
-  }
-
-  .contact{
-    margin-top: clamp(44px, 6vw, 64px);
-    display:flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    justify-content:center;
-  }
-
-  .contact a{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding: 12px 22px;
-    border-radius: 999px;
-    text-decoration:none;
-    font-weight: 600;
-    font-size: 17px;
-    border: 1px solid var(--line);
-    color: var(--paper);
-    transition: border-color .2s ease, background-color .2s ease;
-  }
-
-  .contact a.primary{
-    background: var(--purple);
-    border-color: var(--purple);
-  }
-
-  .contact a.primary:hover{
-    background: var(--purple-light);
-    border-color: var(--purple-light);
-    color: var(--ink);
-  }
-
-  .contact a:not(.primary):hover{
-    border-color: var(--purple-light);
-    background: rgba(160,140,255,0.08);
-  }
-
-  .stats{
-    margin-top: 22px;
-    display:flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content:center;
-  }
-
-  .stat{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--muted);
-  }
-
-  .stat span span{ color: var(--paper); }
-
-  .dot-live{
-    width:7px; height:7px;
-    border-radius:50%;
-    background: #3ddc84;
-    box-shadow: 0 0 8px #3ddc84;
-    animation: livepulse 1.8s ease-in-out infinite;
-  }
-
-  @keyframes livepulse{
-    0%,100%{ opacity:1; transform:scale(1); }
-    50%{ opacity:0.45; transform:scale(0.7); }
-  }
-
-  footer{
-    position: relative;
-    z-index: 2;
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-    padding: clamp(20px, 4vw, 32px) clamp(20px, 5vw, 56px);
-    border-top: 1px solid var(--line);
-  }
-
-  .copyright{
-    font-size: 15px;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .socials{
-    display:flex;
-    gap: 18px;
-  }
-
-  .socials a{
-    color: var(--muted);
-    display:flex;
-    transition: color .2s ease;
-  }
-
-  .socials a:hover{ color: var(--paper); }
-
-  .socials svg{ width: 20px; height: 20px; }
-
-  @media (prefers-reduced-motion: reduce){
-    .field{ animation: none; }
-    .dot-live{ animation: none; }
-  }
-</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ADEPTIX",
+  "url": "https://adeptix.uz/",
+  "logo": "https://adeptix.uz/assets/img/logo-primary.svg",
+  "email": "admin@adeptix.uz",
+  "telephone": "+998934037701",
+  "sameAs": [
+    "https://www.instagram.com/adeptix_uz/",
+    "https://t.me/adeptix_uz",
+    "https://www.youtube.com/@adeptix_uz"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Sayt yaratish qancha vaqt oladi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Loyihaning turi va murakkabligiga qarab farq qiladi — oddiy landing page bir necha kunda, korporativ sayt yoki veb-ilova esa bir necha haftada tayyor bo'ladi. Aniq muddat texnik topshiriq aniqlangandan so'ng belgilanadi." }
+    },
+    {
+      "@type": "Question",
+      "name": "Web-sayt narxi qanday belgilanadi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Narx loyihaning hajmi, funksionalligi va dizayn talablariga qarab hisoblanadi. Loyihangiz haqida qisqacha ma'lumot bersangiz, aniq taklif tayyorlaymiz." }
+    },
+    {
+      "@type": "Question",
+      "name": "Sayt mobil telefonlarda ishlaydimi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ha. Har bir loyiha barcha qurilmalarda — kompyuter, planshet va telefonda — qulay ishlashi uchun moslashtirilgan holda ishlab chiqiladi." }
+    },
+    {
+      "@type": "Question",
+      "name": "360° virtual sayohat nima?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Bu — joyingizni 360° kamera bilan suratga olib, mijoz uni har tomondan, interaktiv tarzda onlayn ko'ra oladigan format. Batafsil ma'lumot 360° Virtual Tour sahifasida." }
+    },
+    {
+      "@type": "Question",
+      "name": "Virtual sayohat qayerlarda ishlatiladi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Mehmonxona, restoran, muzey, ko'chmas mulk, ta'lim muassasasi, klinika, showroom, koworking va dam olish maskanlari kabi joylar uchun ayniqsa foydali." }
+    },
+    {
+      "@type": "Question",
+      "name": "Tayyor saytni keyinchalik o'zgartirish mumkinmi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ha, loyiha ishga tushirilgandan keyin ham kontentni yangilash yoki qo'shimcha o'zgarishlar kiritish uchun murojaat qilishingiz mumkin." }
+    },
+    {
+      "@type": "Question",
+      "name": "Telegram bot kerak bo'lsa ishlab bera olasizmi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ha — mijozlardan buyurtma yig'ish, ro'yxatga olish yoki bildirishnoma yuborish kabi oddiy va foydali Telegram botlarini ishlab beramiz." }
+    },
+    {
+      "@type": "Question",
+      "name": "Saytga SEO qilinadimi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ha, har bir sayt qidiruv tizimlari uchun texnik jihatdan to'g'ri tuzilma, meta ma'lumotlar va tezlik bo'yicha optimallashtiriladi." }
+    },
+    {
+      "@type": "Question",
+      "name": "Sayt xavfsizligi qanday ta'minlanadi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Asosiy web xavfsizlik amaliyotlariga (xavfsiz sarlavhalar, ma'lumotlarni tekshirish, spam himoyasi) rioya qilinadi. 100% kafolat va'da qilmaymiz — realistik va zamonaviy yondashuvni qo'llaymiz." }
+    },
+    {
+      "@type": "Question",
+      "name": "Loyiha boshlash uchun nima kerak?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Telegram bot orqali loyihangiz haqida qisqacha ma'lumot qoldirishingiz kifoya — qolganini birga muhokama qilamiz." }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-<div class="field" aria-hidden="true"></div>
-<div class="grid-lines" aria-hidden="true"></div>
-
-<header>
-  <div class="brand">
-    <svg viewBox="0 0 120 120" fill="#F3F2F2" aria-hidden="true">
-      <path d="M20 16 L110 16 L94 40 L4 40 Z"></path>
-      <path d="M20 50 L86 50 L70 74 L4 74 Z"></path>
-      <path d="M20 84 L62 84 L46 108 L4 108 Z"></path>
-    </svg>
-    <span class="wordmark">ADEPTIX</span>
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-primary.svg" alt="ADEPTIX">
+      <span>ADEPT<b>IX</b></span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Bosh sahifa</a>
+      <a href="index.html#xizmatlar">Xizmatlar</a>
+      <a href="360-virtual-tur.html">360° Virtual Tour</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#boglanish">Bog'lanish</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-primary" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Loyiha haqida gaplashamiz</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menyu" aria-expanded="false" aria-controls="main-nav">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
-  <span class="lang">UZ</span>
 </header>
 
 <main>
-  <div class="content">
-    <h1>Yangi sayt tez orada ishga tushadi.</h1>
-    <p class="sub">Professional veb-saytlar va 360° virtual sayohatlar bo‘yicha ADEPTIX platformasi yangilanmoqda.</p>
 
-    <div class="countdown" role="timer" aria-live="polite" aria-label="Ishga tushishga qolgan vaqt">
-      <div class="unit">
-        <span id="hh">24</span>
-        <label>Soat</label>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-copy">
+        <h1>Biznesingiz uchun <em>zamonaviy raqamli</em> yechimlar.</h1>
+        <p class="lede">Professional web-saytlar, 360° virtual sayohatlar va biznesingizga mos raqamli yechimlar.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#boglanish">Loyihani boshlash</a>
+          <a class="btn btn-outline" href="#xizmatlar">Xizmatlarni ko'rish</a>
+        </div>
       </div>
-      <span class="sep">:</span>
-      <div class="unit">
-        <span id="mm">00</span>
-        <label>Daqiqa</label>
-      </div>
-      <span class="sep">:</span>
-      <div class="unit">
-        <span id="ss">00</span>
-        <label>Soniya</label>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="glyph">
+          <svg viewBox="0 0 120 120" fill="#6D4AFF"><path d="M20 16 L110 16 L94 40 L4 40 Z"/><path d="M20 50 L86 50 L70 74 L4 74 Z" opacity="0.75"/><path d="M20 84 L62 84 L46 108 L4 108 Z" opacity="0.5"/></svg>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="contact">
-      <a class="primary" href="https://t.me/adeptix_admin" target="_blank" rel="noopener">Telegram orqali bog‘lanish</a>
-      <a href="mailto:admin@adeptix.uz">admin@adeptix.uz</a>
-    </div>
+  <!-- SERVICES -->
+  <section class="section" id="xizmatlar">
+    <div class="container">
+      <p class="eyebrow">Xizmatlar</p>
+      <h2>Biznesingiz uchun nima qila olamiz?</h2>
 
-    <div class="stats" id="stats" hidden>
-      <div class="stat" id="onlineStat">
-        <span class="dot-live" aria-hidden="true"></span>
-        <span><span id="onlineCount">0</span> kishi hozir sahifada</span>
-      </div>
-      <div class="stat" id="visitsStat">
-        <span><span id="totalVisits">0</span> marta ko‘rilgan</span>
+      <div class="service-grid">
+
+        <div class="service-card">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18" stroke-linecap="round"/><circle cx="6.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/><circle cx="9" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <h3>Web Development</h3>
+          <p>Biznesingiz atrofida ishlab chiqilgan professional va har qanday qurilmada qulay ishlaydigan veb-saytlar.</p>
+          <span class="more is-soon">Tez orada — batafsil sahifa</span>
+        </div>
+
+        <div class="service-card">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18" stroke-linecap="round"/></svg>
+          </div>
+          <h3>360° Virtual Tour</h3>
+          <p>Mijozlar joyingizni masofadan turib, har tomondan interaktiv tarzda ko'rishi mumkin bo'lgan virtual tajriba.</p>
+          <a class="more" href="360-virtual-tur.html">Batafsil →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="10" height="14" rx="1.5"/><rect x="10" y="7" width="10" height="14" rx="1.5" fill="#F3F2F2"/></svg>
+          </div>
+          <h3>Web Applications</h3>
+          <p>Aniq biznes ehtiyojlari uchun mo'ljallangan shaxsiy kabinetlar, bron qilish tizimlari va ichki platformalar.</p>
+          <span class="more is-soon">Tez orada — batafsil sahifa</span>
+        </div>
+
+        <div class="service-card">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 3 3 10.5l6.5 2.5L12 20l3-6.5L21 3Z" stroke-linejoin="round"/><path d="M9.5 13 21 3" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Telegram Bots</h3>
+          <p>Mijozlar bilan aloqa va buyurtmalarni yig'ish uchun oddiy va foydali Telegram bot yechimlari.</p>
+          <span class="more is-soon">Tez orada — batafsil sahifa</span>
+        </div>
+
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- WEBSITE DEVELOPMENT -->
+  <section class="section" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Web Development</p>
+        <h2>Oddiy sayt emas. Biznesingizning raqamli yuzini yaratamiz.</h2>
+        <p class="lede">Landing page'dan tortib to to'liq korporativ saytgacha — har bir loyiha sizning biznesingiz atrofida, aniq maqsad bilan ishlab chiqiladi.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item"><h3>Responsive</h3><p>Barcha qurilmalarda qulay ko'rinish.</p></div>
+        <div class="feature-item"><h3>Tez</h3><p>Optimallashtirilgan yuklanish tezligi.</p></div>
+        <div class="feature-item"><h3>SEO-friendly</h3><p>Qidiruv tizimlari uchun to'g'ri tuzilma.</p></div>
+        <div class="feature-item"><h3>Xavfsiz</h3><p>Asosiy xavfsizlik amaliyotlariga rioya.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 360 TEASER -->
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">360° Virtual Tour</p>
+        <h2>Joyingizni 360° formatda namoyish qiling.</h2>
+        <p class="lede">Mehmonxona, restoran, muzey, ko'chmas mulk, ta'lim muassasasi, klinika, showroom, koworking yoki dam olish maskani — mijoz joyingizni uyidan chiqmasdan ko'ra oladi.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="360-virtual-tur.html">Xizmatni ko'rish</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true" style="aspect-ratio:4/3;">
+        <div class="glyph">
+          <svg width="30%" viewBox="0 0 24 24" fill="none" stroke="#6D4AFF" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="section" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <p class="eyebrow">Jarayon</p>
+      <h2>Qanday ishlaymiz</h2>
+      <div class="steps">
+        <div class="step"><span class="num">01</span><h3>Muloqot</h3><p>Loyiha va biznes maqsadlarini tushunamiz.</p></div>
+        <div class="step"><span class="num">02</span><h3>Rejalashtirish</h3><p>Struktura, dizayn va texnik yechimni ishlab chiqamiz.</p></div>
+        <div class="step"><span class="num">03</span><h3>Ishlab chiqish</h3><p>Sayt yoki raqamli mahsulotni yaratamiz.</p></div>
+        <div class="step"><span class="num">04</span><h3>Ishga tushirish</h3><p>Sinovdan o'tkazib, loyihani ishga tushiramiz.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ADEPTIX -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Nega ADEPTIX</p>
+      <h2>Professional yondashuv</h2>
+      <div class="why-grid">
+        <div class="why-item"><h3>Professional yondashuv</h3><p>Har bir loyiha biznes maqsadiga mos ishlab chiqiladi.</p></div>
+        <div class="why-item"><h3>Zamonaviy texnologiyalar</h3><p>Zamonaviy web texnologiyalari va optimallashtirilgan yechimlardan foydalanamiz.</p></div>
+        <div class="why-item"><h3>Responsive dizayn</h3><p>Sayt barcha qurilmalarda qulay ishlaydi.</p></div>
+        <div class="why-item"><h3>Xavfsizlik</h3><p>Saytni asosiy web xavfsizlik tahdidlaridan himoyalashga e'tibor beriladi.</p></div>
+        <div class="why-item"><h3>Texnik yordam</h3><p>Loyiha ishga tushirilgandan keyin ham texnik yordam ko'rsatish mumkin.</p></div>
+        <div class="why-item"><h3>Aniq muloqot</h3><p>Har bir bosqichda loyihangiz holati haqida ochiq va tushunarli aloqada bo'lamiz.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <p class="eyebrow">FAQ</p>
+      <h2>Ko'p so'raladigan savollar</h2>
+
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>Sayt yaratish qancha vaqt oladi?<span class="plus"></span></summary>
+          <p>Loyihaning turi va murakkabligiga qarab farq qiladi — oddiy landing page bir necha kunda, korporativ sayt yoki veb-ilova esa bir necha haftada tayyor bo'ladi. Aniq muddat texnik topshiriq aniqlangandan so'ng belgilanadi.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Web-sayt narxi qanday belgilanadi?<span class="plus"></span></summary>
+          <p>Narx loyihaning hajmi, funksionalligi va dizayn talablariga qarab hisoblanadi. Loyihangiz haqida qisqacha ma'lumot bersangiz, aniq taklif tayyorlaymiz.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Sayt mobil telefonlarda ishlaydimi?<span class="plus"></span></summary>
+          <p>Ha. Har bir loyiha barcha qurilmalarda — kompyuter, planshet va telefonda — qulay ishlashi uchun moslashtirilgan holda ishlab chiqiladi.</p>
+        </details>
+        <details class="faq-item">
+          <summary>360° virtual sayohat nima?<span class="plus"></span></summary>
+          <p>Bu — joyingizni 360° kamera bilan suratga olib, mijoz uni har tomondan, interaktiv tarzda onlayn ko'ra oladigan format. Batafsil ma'lumot <a href="360-virtual-tur.html">360° Virtual Tour</a> sahifasida.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Virtual sayohat qayerlarda ishlatiladi?<span class="plus"></span></summary>
+          <p>Mehmonxona, restoran, muzey, ko'chmas mulk, ta'lim muassasasi, klinika, showroom, koworking va dam olish maskanlari kabi joylar uchun ayniqsa foydali.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Tayyor saytni keyinchalik o'zgartirish mumkinmi?<span class="plus"></span></summary>
+          <p>Ha, loyiha ishga tushirilgandan keyin ham kontentni yangilash yoki qo'shimcha o'zgarishlar kiritish uchun murojaat qilishingiz mumkin.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Telegram bot kerak bo'lsa ishlab bera olasizmi?<span class="plus"></span></summary>
+          <p>Ha — mijozlardan buyurtma yig'ish, ro'yxatga olish yoki bildirishnoma yuborish kabi oddiy va foydali Telegram botlarini ishlab beramiz.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Saytga SEO qilinadimi?<span class="plus"></span></summary>
+          <p>Ha, har bir sayt qidiruv tizimlari uchun texnik jihatdan to'g'ri tuzilma, meta ma'lumotlar va tezlik bo'yicha optimallashtiriladi.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Sayt xavfsizligi qanday ta'minlanadi?<span class="plus"></span></summary>
+          <p>Asosiy web xavfsizlik amaliyotlariga (xavfsiz sarlavhalar, ma'lumotlarni tekshirish, spam himoyasi) rioya qilinadi. 100% kafolat va'da qilmaymiz — realistik va zamonaviy yondashuvni qo'llaymiz.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Loyiha boshlash uchun nima kerak?<span class="plus"></span></summary>
+          <p>Telegram bot orqali loyihangiz haqida qisqacha ma'lumot qoldirishingiz kifoya — qolganini birga muhokama qilamiz.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="boglanish">
+    <div class="container">
+      <div class="contact-panel">
+        <p class="eyebrow">Bog'lanish</p>
+        <h2>Loyihangizni birgalikda boshlaymiz.</h2>
+        <p class="lede">Sayt, 360° virtual sayohat yoki biznesingiz uchun boshqa raqamli yechim kerakmi? Biz bilan bog'laning.</p>
+        <div class="contact-methods">
+          <a class="btn btn-primary" href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Telegram orqali bog'lanish</a>
+          <a class="btn btn-outline" href="tel:+998934037701">Qo'ng'iroq qilish</a>
+          <a class="btn btn-outline" href="mailto:admin@adeptix.uz">Email yuborish</a>
+        </div>
+        <p class="contact-line">Tel: <a href="tel:+998934037701">+998 93 403 77 01</a> &nbsp;·&nbsp; Email: <a href="mailto:admin@adeptix.uz">admin@adeptix.uz</a></p>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<footer>
-  <span class="copyright">© ADEPTIX. Barcha huquqlar himoyalangan.</span>
-  <div class="socials">
-    <a href="https://www.instagram.com/adeptix_uz/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1"></circle></svg>
-    </a>
-    <a href="https://t.me/adeptix_uz" target="_blank" rel="noopener" aria-label="Telegram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 4.5 3 11l6 2.2M21 4.5 15.5 20l-6.5-6.8M21 4.5 9 13.2"></path></svg>
-    </a>
-    <a href="https://www.youtube.com/@adeptix_uz" target="_blank" rel="noopener" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="4"></rect><path d="M11 9.8 15 12l-4 2.2z" fill="currentColor" stroke="none"></path></svg>
-    </a>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo-primary.svg" alt="ADEPTIX">
+          <span>ADEPT<b>IX</b></span>
+        </a>
+        <p>Biznesingiz uchun professional veb-saytlar va 360° virtual sayohatlar studiyasi.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatsiya</h4>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="index.html#xizmatlar">Xizmatlar</a>
+        <a href="360-virtual-tur.html">360° Virtual Tour</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Xizmatlar</h4>
+        <a href="index.html#xizmatlar">Web Development</a>
+        <a href="360-virtual-tur.html">360° Virtual Tour</a>
+        <a href="index.html#xizmatlar">Web Applications</a>
+        <a href="index.html#xizmatlar">Telegram Bots</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <a href="tel:+998934037701">+998 93 403 77 01</a>
+        <a href="mailto:admin@adeptix.uz">admin@adeptix.uz</a>
+        <a href="https://t.me/adeptix_bot" target="_blank" rel="noopener">Telegram bot</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> ADEPTIX. Barcha huquqlar himoyalangan.</span>
+      <div class="socials">
+        <a href="https://www.instagram.com/adeptix_uz/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://t.me/adeptix_uz" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 3 3 10.5l6.5 2.5L12 20l3-6.5L21 3Z" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@adeptix_uz" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M11 10.5v3l3-1.5Z" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<script>
-  // Fixed 24-hour launch target, set once so every visitor counts down to the same moment.
-  var LAUNCH_AT = new Date("2026-09-05T13:07:26Z").getTime();
-
-  var hhEl = document.getElementById('hh');
-  var mmEl = document.getElementById('mm');
-  var ssEl = document.getElementById('ss');
-
-  function pad(n){ return String(n).padStart(2, '0'); }
-
-  function tick(){
-    var diff = LAUNCH_AT - Date.now();
-    if (diff <= 0){
-      hhEl.textContent = '00';
-      mmEl.textContent = '00';
-      ssEl.textContent = '00';
-      clearInterval(timer);
-      return;
-    }
-    var totalSeconds = Math.floor(diff / 1000);
-    var h = Math.floor(totalSeconds / 3600);
-    var m = Math.floor((totalSeconds % 3600) / 60);
-    var s = totalSeconds % 60;
-    hhEl.textContent = pad(h);
-    mmEl.textContent = pad(m);
-    ssEl.textContent = pad(s);
-  }
-
-  tick();
-  var timer = setInterval(tick, 1000);
-
-  // Live "online now" + total visit count.
-  // Real counters via Abacus (abacus.jasoncameron.dev) — a free, public, no-signup
-  // counting service. Nothing is fabricated: if the service can't be reached
-  // (network, ad-blocker, offline), the whole stats row stays hidden rather
-  // than showing a made-up number.
-  (function(){
-    var API = 'https://abacus.jasoncameron.dev';
-    var NS = 'adeptix.uz';
-    var statsEl = document.getElementById('stats');
-    var onlineEl = document.getElementById('onlineCount');
-    var totalEl = document.getElementById('totalVisits');
-    var joined = 0, left = 0, ready = false;
-
-    function fmt(n){
-      try { return n.toLocaleString('uz-UZ'); } catch(e){ return String(n); }
-    }
-
-    function renderOnline(){
-      var now = Math.max(1, joined - left);
-      onlineEl.textContent = fmt(now);
-    }
-
-    function safeJson(res){
-      if (!res.ok) throw new Error('bad status');
-      return res.json();
-    }
-
-    // Total pageviews: increments once per load, real cumulative count.
-    fetch(API + '/hit/' + NS + '/total_visits')
-      .then(safeJson)
-      .then(function(d){
-        totalEl.textContent = fmt(d.value);
-        statsEl.hidden = false;
-      })
-      .catch(function(){ /* leave stats hidden if this fails */ });
-
-    // "Online now": two plain counters (joined / left). Online = joined - left.
-    // Not a perfect live presence system, but every number in it is real.
-    function join(){
-      return fetch(API + '/hit/' + NS + '/online_joined', { keepalive: true })
-        .then(safeJson)
-        .then(function(d){ joined = d.value; if (ready) renderOnline(); });
-    }
-
-    function leave(){
-      fetch(API + '/hit/' + NS + '/online_left', { keepalive: true }).catch(function(){});
-    }
-
-    Promise.all([
-      join(),
-      fetch(API + '/get/' + NS + '/online_left').then(function(res){
-        return res.ok ? res.json() : { value: 0 };
-      }).then(function(d){ left = d.value || 0; }).catch(function(){ left = 0; })
-    ]).then(function(){
-      ready = true;
-      renderOnline();
-      statsEl.hidden = false;
-    }).catch(function(){ /* leave stats hidden if this fails */ });
-
-    function refresh(){
-      Promise.all([
-        fetch(API + '/get/' + NS + '/online_joined').then(safeJson).catch(function(){ return null; }),
-        fetch(API + '/get/' + NS + '/online_left').then(function(res){
-          return res.ok ? res.json() : null;
-        }).catch(function(){ return null; })
-      ]).then(function(results){
-        if (results[0]) joined = results[0].value;
-        if (results[1]) left = results[1].value;
-        if (ready) renderOnline();
-      });
-    }
-    setInterval(refresh, 20000);
-
-    window.addEventListener('pagehide', leave);
-    document.addEventListener('visibilitychange', function(){
-      if (document.visibilityState === 'hidden') {
-        leave();
-      } else if (document.visibilityState === 'visible' && ready) {
-        join();
-      }
-    });
-  })();
-</script>
-
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
